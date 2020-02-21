@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  server:
+    image: gustavobcx/php-mssql:5.6.40-apache
+    volumes:
+      - ./project.conf:/etc/apache2/sites-available/project.conf
+      - ./project.conf:/etc/apache2/sites-enabled/project.conf
+      - ./project:/var/www/project
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./ca-bundle.crt:/etc/ssl/certs/ca-bundle.crt
+    ports:
+      - 4201:80
